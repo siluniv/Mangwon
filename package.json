@@ -1,0 +1,41 @@
+{
+  "name": "mangwon",
+  "description": "블루닷 망원(Mangwon) 테마",
+  "version": "0.0.1",
+  "engines": {
+    "ghost": ">=4.0.0"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "devDependencies": {
+    "dart-sass": "^1.25.0",
+    "fs": "^0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0",
+    "gulp-size": "^4.0.1",
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^5.1.0",
+    "jshint": "^2.13.6",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.57.1",
+    "sass-mq": "^5.0.1"
+  },
+  "author": {
+    "name": "Mediasphere",
+    "email": "admin@mediasphere.kr",
+    "url": "https://mediasphere.kr/"
+  },
+  "config": {
+    "posts_per_page": 10,
+    "image_sizes": {
+      "test": {
+        "width": 100
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ @site.locale }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ meta_title }}</title>
+
+  {{> fonts }}
+  {{> compiled/inline-css }}
+
+  <style>
+  .kg-width-wide {}
+  .kg-width-full {}
+  .kg-gallery-container {}
+  .kg-gallery-row {}
+  .kg-gallery-image {}
+  .kg-bookmark-card {}
+  .kg-bookmark-container {}
+  .kg-bookmark-content {}
+  .kg-bookmark-title {}
+  .kg-bookmark-description {}
+  .kg-bookmark-metadata {}
+  .kg-bookmark-icon {}
+  .kg-bookmark-author {}
+  .kg-bookmark-publisher {}
+  .kg-bookmark-thumbnail {}
+  </style>
+
+  {{ ghost_head }}
+</head>
+<body class="{{ body_class }} {{{block 'body_custom_class'}}}">
+  <header class="c-header">
+    {{> header }}
+  </header>
+
+  <main>
+    {{{ body }}}
+  </main>
+
+  <footer>
+    {{#if @site.use_footer}}
+    <div>
+      {{> footer }}
+    </div>
+    {{/if}}
+
+    <div>
+      {{ bluedot_footer }}
+    </div>
+  </footer>
+
+  {{ ghost_foot }}
+</body>
+</html>

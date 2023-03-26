@@ -1,0 +1,8 @@
+.c-header {
+  max-width: 1300px;
+  margin: 0 auto;
+
+  @include mq($from: p768) {
+    background-color: #ff0;
+  }
+}

@@ -1,0 +1,112 @@
+{{!< default}}
+
+{{#contentFor 'title'}}{{ meta_title }}{{/contentFor}}
+
+{{!-- Show the custom homepage content --}}
+
+{{#get "pages" filter="tag:hash-home-hero" limit="1" order="published_at desc"}}
+{{#foreach pages}}
+<div class="c-home-hero">
+  <div class="c-home-hero__background">
+    {{#if feature_image}}
+    <div class="c-home-hero__image--wrap">
+      <img
+        class="c-home-hero__image"
+        alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}"
+        src="{{img_url feature_image}}"
+      />
+    </div>
+    {{/if}}
+  </div>
+  <div class="c-home-hero__content--wrap">
+    <div class="o-grid">
+      <div class="o-grid__col">
+        <div class="c-home-hero__content c-content">{{ content }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/foreach}}
+{{/get}}
+
+{{#get "pages" filter="tag:hash-home-sub" limit="1" order="published_at desc"}}
+{{#foreach pages}}
+<div class="c-home-sub">
+  <div class="c-home-sub__content--wrap">
+    <div class="c-home-sub__content c-content">{{ content }}</div>
+  </div>
+</div>
+{{/foreach}}
+{{/get}}
+
+{{!-- 홈 상품 섹션 --}}
+<div class="c-home-section c-home-section--product">
+  <div class="o-grid">
+    <div class="o-grid__col">
+      <div class="c-home-product__header">
+        {{#if @custom.home_product_category_title}}
+        <div class="c-home-product__subject">{{ @custom.home_product_category_title }}</div>
+        {{/if}}
+        <div style="display:none;">{{product_categories}}</div>
+        <div class="c-home-product__navigation">
+          <ul class="c-shop-navigation">
+            <li class="c-shop-navigation__item">{{#link href="/shop/" class="c-shop-navigation__link" activeClass="c-shop-navigation__link--active"}}전체보기{{/link}}</li>
+            {{#foreach product_categories}}
+            <li class="c-shop-navigation__item">{{#link href=(url) class="c-shop-navigation__link" activeClass="c-shop-navigation__link--active"}}{{label}}{{/link}}</li>
+            {{/foreach}}
+          </ul>
+        </div>
+      </div>
+      <div class="c-home-product__list">
+        {{#get "products" filter="featured:true" include="tags,authors" order="published_at desc" limit="6"}}
+        {{#if products}}
+        <div class="c-archive-grid c-archive-grid--product">
+        {{#foreach products}}
+          {{> product-card }}
+        {{/foreach}}
+        </div>
+        {{/if}}
+        {{/get}}
+      </div>
+      <div class="c-home-product__action">
+        <a href="" class="c-home-product__more">전체보기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- 홈 포스트 섹션 --}}
+<div class="c-home-section c-home-section--post">
+  <div class="o-grid">
+    <div class="o-grid__col">
+      {{#get "posts" filter="featured:true" include="tags,authors" order="published_at desc" limit="1"}}
+      {{#if posts}}
+      {{#foreach posts}}
+      <div class="c-home-post__hero">
+        {{> post-card format="big" }}
+      </div>
+      {{/foreach}}
+      {{/if}}
+      {{/get}}
+
+      <div class="c-archive-grid">
+      {{#foreach posts limit="3"}}
+        {{> post-card}}
+      {{/foreach}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#unless @member}}
+<div class="c-home-section c-home-subscribe">
+  <div class="o-grid">
+    <div class="o-grid__col">
+      {{> subscribe-form-h inputLabel="home-subscribe"}}
+    </div>
+  </div>
+</div>
+{{/unless}}
+
+{{> home/promotion-banner }}

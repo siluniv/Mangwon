@@ -1,0 +1,17 @@
+<div class="c-subscribe-card">
+
+  <div class="c-subscribe-card__head">
+    <div class="c-subscribe-card__t">Newsletter</div>
+    {{#if @custom.subscribe_form_title}}
+    <div class="c-subscribe-card__title">{{ @custom.subscribe_form_title }}</div>
+    {{/if}}
+  </div>
+  <div class="c-subscribe-card__body">
+    <form data-members-form="subscribe" class="c-subscribe-card__form">
+      <label for="{{ inputLabel }}" class="u-hidden-visually">{{t 'Your email address' }}</label>
+
+      <input type="email" name="email" class="c-subscribe-card__input" id="{{ inputLabel }}" placeholder="{{t 'Your email address' }}" required data-members-email>
+      <button type="submit" class="c-subscribe-card__submit">뉴스레터 구독</button>
+    </form>
+  </div>
+</div>

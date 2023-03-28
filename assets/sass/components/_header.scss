@@ -1,8 +1,46 @@
-.c-header {
-  max-width: 1300px;
-  margin: 0 auto;
+/*------------------------------------*\
+  Components > Header
+\*------------------------------------*/
 
-  @include mq($from: p768) {
-    background-color: #ff0;
+.c-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: #3B25A8;
+  color: #fff;
+
+  @include mq($from: desktop) {
+    padding: $space-40 0;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    @include mq($from: desktop) {
+      min-height: $space-40;
+      padding: 0;
+    }
+  }
+}
+
+.home-template {
+  .c-header {
+    margin-bottom: 0;
+  }
+}
+
+.shop-template {
+  .c-header {
+    margin-bottom: 0;
   }
 }

@@ -8,20 +8,37 @@
   "keywords": [
     "ghost-theme"
   ],
+  "scripts": {
+    "postinstall": "bower install"
+  },
   "devDependencies": {
+    "@primer/css": "^20.8.3",
+    "clipboard": "^2.0.11",
+    "concat": "^1.0.3",
     "dart-sass": "^1.25.0",
+    "evil-icons": "^1.10.1",
     "fs": "^0.0.1-security",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.1.4",
+    "gulp-rtlcss": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-size": "^4.0.1",
+    "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "gulp-zip": "^5.1.0",
     "jshint": "^2.13.6",
+    "jshint-stylish": "^2.2.1",
+    "lazysizes": "^5.3.2",
+    "node-sass": "^8.0.0",
     "normalize.css": "^8.0.1",
+    "prismjs": "^1.29.0",
+    "run-sequence": "^2.2.1",
     "sass": "^1.57.1",
     "sass-mq": "^5.0.1"
   },
@@ -31,7 +48,62 @@
     "url": "https://mediasphere.kr/"
   },
   "config": {
-    "posts_per_page": 10,
+    "custom": {
+      "home_product_category_title": {
+        "group": "homepage",
+        "type": "text",
+        "title": "홈페이지 카테고리 제목",
+        "default": "타이틀"
+      },
+      "subscribe_form_title": {
+        "group": "homepage",
+        "type": "text",
+        "title": "뉴스레터 영역 제목",
+        "default": "뉴스레터를 구독하세요."
+      },
+      "promotion_active": {
+        "group": "homepage",
+        "type": "select",
+        "options": [
+          "on",
+          "off"
+        ],
+        "default": "off",
+        "title": "프로모션 배너 사용",
+        "description": "홈페이지에서 프로모션 배너를 사용하려면 on 으로 활성화 하세요."
+      },
+      "promotion_text_top": {
+        "group": "homepage",
+        "type": "text",
+        "default": "프로모션 배너 텍스트",
+        "title": "프로모션 텍스트"
+      },
+      "promotion_button_text": {
+        "group": "homepage",
+        "type": "text",
+        "default": "구독하기",
+        "title": "프로모션 배너 버튼 텍스트"
+      },
+      "promotion_button_url": {
+        "group": "homepage",
+        "type": "text",
+        "default": "/membership/",
+        "title": "프로모션 배너 버튼 링크"
+      },
+      "shop_point_background_color": {
+        "group": "shop",
+        "type": "color",
+        "default": "#3c7eff",
+        "title": "숍 포인트 배경색"
+      },
+      "shop_point_color": {
+        "group": "shop",
+        "type": "color",
+        "default": "#000000",
+        "title": "숍 포인트 글자색"
+      }
+    },
+    "posts_per_page": 12,
     "image_sizes": {
       "test": {
         "width": 100

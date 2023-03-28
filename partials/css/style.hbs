@@ -1,0 +1,28 @@
+<style>
+
+/* For Bluedot */
+:root {
+  --accent-color: {{ @site.accent_color }};
+  --shop-accent-color: {{ @custom.shop_point_color }};
+  --shop-accent-background-color: {{ @custom.shop_point_background_color }};
+}
+
+/* Style */
+body {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.c-nav__link--member {
+  background: {{ @site.accent_color }};
+}
+
+.c-header .bluedot-search-button.color-mode-dark svg,
+.c-header .bluedot-search-button.color-mode-dark svg path {
+  fill: #fff;
+}
+
+.c-nav-toggle--close .c-nav-toggle__icon:after,
+.c-nav-toggle--close .c-nav-toggle__icon:before {
+  background-color: #fff;
+}
+</style>

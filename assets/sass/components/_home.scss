@@ -289,7 +289,7 @@
     padding-bottom: 56px;
 
     .c-archive-grid {
-      .c-post-card:last-child {
+      .c-post-card:nth-child(4) {
         @include mq($from: desktop) {
           display: none;
         }

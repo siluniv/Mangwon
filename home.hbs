@@ -47,18 +47,31 @@
         {{#if @custom.home_product_category_title}}
         <div class="c-home-product__subject">{{ @custom.home_product_category_title }}</div>
         {{/if}}
+
         <div style="display:none;">{{product_categories}}</div>
+        {{#if product_categories}}
         <div class="c-home-product__navigation">
           <ul class="c-shop-navigation">
             <li class="c-shop-navigation__item">{{#link href="/shop/" class="c-shop-navigation__link" activeClass="c-shop-navigation__link--active"}}전체보기{{/link}}</li>
             {{#foreach product_categories}}
-            <li class="c-shop-navigation__item">{{#link href=(url) class="c-shop-navigation__link" activeClass="c-shop-navigation__link--active"}}{{label}}{{/link}}</li>
+            <li class="c-shop-navigation__item">{{#link href=(url) class="c-shop-navigation__link c-shop-navigation__action" activeClass="c-shop-navigation__link--active"}}{{label}}{{/link}}</li>
             {{/foreach}}
           </ul>
         </div>
+        {{else}}
+        <div class="c-home-product__navigation">
+          <ul class="c-shop-navigation">
+            <li class="c-shop-navigation__item">{{#link href="/shop/" class="c-shop-navigation__link" activeClass="c-shop-navigation__link--active"}}전체보기{{/link}}</li>
+            <li class="c-shop-navigation__item">{{#link href="/shop/online-class/" class="c-shop-navigation__link c-shop-navigation__action" activeClass="c-shop-navigation__link--active"}}온라인 강좌{{/link}}</li>
+            <li class="c-shop-navigation__item">{{#link href="/shop/webinar/" class="c-shop-navigation__link c-shop-navigation__action" activeClass="c-shop-navigation__link--active"}}이벤트{{/link}}</li>
+            <li class="c-shop-navigation__item">{{#link href="/shop/digital-book/" class="c-shop-navigation__link c-shop-navigation__action" activeClass="c-shop-navigation__link--active"}}디지털 북{{/link}}</li>
+            <li class="c-shop-navigation__item">{{#link href="/shop/etc/" class="c-shop-navigation__link c-shop-navigation__action" activeClass="c-shop-navigation__link--active"}}기타{{/link}}</li>
+          </ul>
+        </div>
+        {{/if}}
       </div>
       <div class="c-home-product__list">
-        {{#get "products" filter="featured:true" include="tags,authors" order="published_at desc" limit="6"}}
+        {{#get "products" include="tags,authors" order="published_at desc" limit="6"}}
         {{#if products}}
         <div class="c-archive-grid c-archive-grid--product">
         {{#foreach products}}
@@ -69,7 +82,7 @@
         {{/get}}
       </div>
       <div class="c-home-product__action">
-        <a href="" class="c-home-product__more">전체보기</a>
+        <a href="/shop/" class="c-home-product__more">전체보기</a>
       </div>
     </div>
   </div>
@@ -91,7 +104,7 @@
       {{/get}}
 
       <div class="c-archive-grid">
-      {{#foreach posts limit="3"}}
+      {{#foreach posts limit="4"}}
         {{> post-card}}
       {{/foreach}}
       </div>

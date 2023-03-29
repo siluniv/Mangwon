@@ -4,85 +4,109 @@
 
 .c-post-card {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  column-gap: 46px;
-
-  @include mq($until: desktop) {
-    padding: 16px 0;
-    border-top: 1px solid rgba(0,0,0,0.2);
-  }
+  flex-direction: column;
 
   @include mq($from: desktop) {
-    display: block;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
   }
 
-  &__body {
-    display: flex;
-    flex-direction: column;
-  }
 
   &__url {
+
     &--cover {
       position: absolute;
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
+      left: 0;
     }
+
   }
 
   &__media {
-    position: relative;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
     width: 100%;
-    min-width: 120px;
-    max-width: 120px;
     overflow: hidden;
 
-    border: 1px solid #000;
-    background-color: #f5f5f5;
+    margin-bottom: 16px;
+    position: relative;
+    background-color: rgba(0,0,0,.5);
 
-    @include mq($from:desktop) {
-      margin-bottom: 16px;
-
-      aspect-ratio: 16 / 9;
-      max-width: none;
+    @include mq($until: desktop) {
+      border: 1px solid #000;
     }
   }
 
   &__image {
     display: block;
-    margin: 0;
-    padding: 0;
     object-fit: cover;
     width: 100%;
     height: 100%;
 
     &--wrap {
+      aspect-ratio: 4 / 3;
       width: 100%;
       height: 100%;
     }
   }
 
-  &__title {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
-
-    @include ellipsis(3);
+  &__main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     @include mq($from: desktop) {
-      font-size: 24px;
-      line-height: 32px;
+      padding: 0 20px;
+    }
+  }
+
+  &__membership {
+    margin-bottom: 10px;
+
+    &--label {
+      font-size: 12px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1;
+      height: 24px;
+
+      padding: 0px 8px 0 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(0,0,0,0.3);
+      border-radius: 3px;
+      background-color: rgba(0,0,0,0.1);
+      color: rgba(0,0,0,0.2);
     }
 
-    &--wrap {
-      flex-grow: 1;
+    &--paid {
+      background: rgba(99, 16, 164, 0.1);
+      border: 1px solid rgba(99, 16, 164, 0.3);
+      color: rgba(99, 16, 164, 0.3);
+    }
+  }
 
-      @include mq($from: desktop) {
-        margin-bottom: 16px;
-      }
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -1px;
+
+    margin-bottom: 9px;
+
+    @include ellipsis(2);
+
+    @include mq($from: desktop) {
+      margin-bottom: 16px;
     }
   }
 
@@ -90,84 +114,122 @@
     display: none;
   }
 
-  &__meta {
+  &__data {
     display: flex;
     align-items: center;
-    column-gap: 13px;
 
-    font-size: 12px;
-    font-weight: 700;
-  }
+    column-gap: 16px;
 
-  &__tag {
-    color: #6b86e2;
+    @include mq($from: desktop) {
+      border-top: 0.5px solid #d9d9d9;
+      padding: 16px 0;
+    }
+
   }
 
   &__author {
     display: flex;
     align-items: center;
-    column-gap: 4px;
+    column-gap: 12px;
+    flex-shrink: 0;
 
-    font-weight: 500;
+    &--profile {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 100%;
+      border: 1px solid #d9d9d9;
+      background-color: #d9d9d9;
+      width: 32px;
+      height: 32px;
 
-    &::before {
-      content: 'by';
-      display: block;
-      color: #b9b9b9;
-      font-style: italic;
+      &-image {
+        aspect-ratio: 1 / 1;
+
+        img {
+          display: block;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &--name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #000;
     }
   }
 
+  &__meta {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    font-size: 12px;
+    line-height: 24px;
+
+    color: #8c8c82;
+
+    @include mq($from: desktop) {
+      justify-content: space-between;
+    }
+  }
+
+  &__tag {
+    flex-shrink: 0;
+  }
 }
 
 .c-post-card--big {
-  display: block;
-  border: 0px;
-  margin-bottom: 56px;
+  margin-bottom: 60px;
 
   @include mq($from: desktop) {
+    background-color: transparent;
+    border-radius: 0;
+    filter: none;
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-
-    margin-bottom: 64px;
   }
 
   .c-post-card {
 
-    &__body {
+    &__main {
       @include mq($from: desktop) {
-        padding-left: 60px;
+        padding: 0 0 0 46px;
       }
     }
 
-    &__media {
-      margin-bottom: 16px;
-      max-width: none;
-
+    &__content {
       @include mq($from: desktop) {
-        margin-bottom: 0;
+        flex-grow: 0;
       }
     }
 
     &__title {
       font-size: 28px;
       line-height: 41px;
-      letter-spacing: -0.2;
-      margin-bottom: 16px;
 
-      &--wrap {
-        @include mq($from: desktop) {
-          flex-grow: 0;
-        }
+      @include mq($from: desktop) {
+        font-size: 32px;
+        line-height: 46px;
+        letter-spacing: -0.02em;
       }
     }
 
     &__excerpt {
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
 
       @include ellipsis(5);
+    }
+
+    &__data {
+      @include mq($from: desktop) {
+        border-top: 0px;
+      }
     }
   }
 }

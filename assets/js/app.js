@@ -124,6 +124,37 @@ $(document).ready(function() {
     });
   });
 
+
+  // Home category product
+  var category_navigation = $('.c-home-product__navigation .c-shop-navigation__action');
+  var home_product_list = $('.c-home-product__list .c-archive-grid--product');
+  var home_product_more = $('.c-home-product__more');
+  if (category_navigation) {
+    category_navigation.click(function(e) {
+      e.preventDefault();
+
+      var requestUrl = $(this).attr('href');
+      home_product_more.attr('href', requestUrl);
+      $.ajax({
+        url: requestUrl,
+      })
+      .done(function(data) {
+        var posts = $('.bluedot-product-card', data);
+        home_product_list.removeClass('c-archive-grid--disable');
+        home_product_list.empty();
+
+        if (posts.length) {
+          home_product_list.append(posts);
+        } else {
+          var empty = $('<div class="c-home-product__list--empty">아직 상품이 없습니다.</div>');
+          home_product_list.addClass('c-archive-grid--disable');
+          home_product_list.append(empty);
+        }
+      });
+
+    })
+  }
+
   // =====================
   // Mobile Search form
   // =====================

@@ -41,17 +41,31 @@
 }
 
 .c-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px 20px;
+
   @include mq($from: desktop) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 46px 90px;
+    gap: 60px 46px;
   }
 
-  &--product {
-    @include mq($until: desktop) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 42px 24px;
-    }
+  &--disable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  // &--product {
+  //   @include mq($until: desktop) {
+  //     display: grid;
+  //     grid-template-columns: repeat(2, 1fr);
+  //     gap: 42px 24px;
+  //   }
+
+  //   @include mq($from: desktop) {
+  //     gap: 90px;
+  //   }
+  // }
 }

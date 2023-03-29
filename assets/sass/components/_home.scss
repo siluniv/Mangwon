@@ -287,6 +287,14 @@
   &--post {
     padding-top: 46px;
     padding-bottom: 56px;
+
+    .c-archive-grid {
+      .c-post-card:last-child {
+        @include mq($from: desktop) {
+          display: none;
+        }
+      }
+    }
   }
 }
 
@@ -296,7 +304,7 @@
 
   &__background {
     position: absolute;
-    top: 0;
+    top: -80px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -343,6 +351,30 @@
   + .c-home-section {
     border-top: 0px;
   }
+
+  .c-content {
+    * {
+      color: #fff;
+    }
+
+    a {
+      @include attention {
+        color: #fff;
+      }
+    }
+
+    .kg-button-card a.kg-btn {
+      border: 3px solid #fff;
+      background-color: transparent;
+
+      @include attention {
+        color: #3B25A8;
+        background-color: #fff;
+        opacity: 1;
+      }
+    }
+  }
+
 }
 
 .c-home-sub {
@@ -538,8 +570,8 @@
       letter-spacing: -2%;
 
       @include mq($from: desktop) {
-        font-size: 36px;
-        line-height: 42px;
+        font-size: 32px;
+        line-height: 1.4
       }
     }
 
@@ -572,4 +604,168 @@
     }
   }
 
+}
+
+
+.c-home-product__list {
+  .bluedot-product-card {
+    @include mq($from: desktop) {
+      filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
+      border-radius: 10px;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    .cover {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      width: 100%;
+      background-color: #ccc;
+      margin-bottom: 6px;
+
+      @include mq($from: desktop) {
+        margin-bottom: 0px;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .label-dday {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 100rem;
+        background-color: #000;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1;
+
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        height: 20px;
+        padding: 0 8px;
+
+        @include mq($from: desktop) {
+          right: 12px;
+          top: 12px;
+          font-size: 12px;
+        }
+
+      }
+
+      a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    .profile {
+      display: none;
+    }
+
+    .info {
+      @include mq($from: desktop) {
+        padding: 20px;
+      }
+
+      .header {
+        .label {
+          display: block;
+          font-weight: 700;
+          font-size: 11px;
+          color: #587cff;
+          margin-bottom: 6px;
+
+          @include mq($from: desktop) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      > h3 {
+        font-weight: 800;
+        font-size: 15px;
+        line-height: 18px;
+        font-family: 'Noto Sans KR', sans-serif;
+
+        margin-bottom: 8px;
+        min-height: 36px;
+
+        @include ellipsis(2);
+
+        @include mq($from: desktop) {
+          font-size: 18px;
+          line-height: 24px;
+          letter-spacing: -0.02em;
+
+          margin-bottom: 24px;
+          min-height: 48px;
+        }
+      }
+
+      .excerpt {
+        display: none;
+      }
+    }
+
+    .prices {
+      .price {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+
+        @include mq($from: desktop) {
+          justify-content: space-between;
+        }
+
+        + .price {
+          margin-top: 10px;
+        }
+
+        &:first-child {
+          color: #b9b9b9;
+        }
+
+        .price-label {
+          width: 80px;
+          font-weight: 700;
+          font-size: 10px;
+          line-height: 1;
+
+          @include mq($from: desktop) {
+            width: auto;
+            font-size: 14px;
+          }
+        }
+
+        .price-text {
+          font-weight: 800;
+          font-size: 10px;
+          line-height: 1;
+
+          @include mq($from: desktop) {
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+body.home-template {
+  .c-header {
+    background: none;
+  }
 }
